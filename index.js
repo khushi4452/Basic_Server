@@ -6,7 +6,7 @@ const PORT = 5000;
 
 app.use(express.json());
 
-// This is a temporary server
+// This is a temporary server 
 const plants = [
     {
         "id": 7566,
@@ -104,6 +104,18 @@ app.get("/plants", (req, res) => {
 })
 
 
+app.get("/plant/:id", (req ,res)=>{
+    const {id} = req. params
+
+    app.get('/fetch-plant', (req, res) => {
+        res.json({
+            "success": true,
+            "data": "id",
+            "message": "Plant fetched successfully"
+        });
+    });
+    
+})
 
 
 app.listen(PORT, () => {
