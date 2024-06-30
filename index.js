@@ -15,7 +15,8 @@ const plants = [
         "image": "https://m.media-amazon.com/images/I/41QHZP6ZCxL._SX300_SY300_QL70_FMwebp_.jpg",
         "price": "170",
         "description": "Lucky bamboo and beautiful tree"
-    }]
+    }
+];
 
 app.post("/plant", (req, res) => {
     const { name, category, image, price, description } = req.body;
@@ -25,28 +26,23 @@ app.post("/plant", (req, res) => {
             success: false,
             data: null,
             message: "name cannot be empty...."
-
-        })
+        });
     }
-
 
     if (!category) {
         return res.json({
             success: false,
             data: null,
-            message: "  category cannot be empty...."
-
-        })
+            message: "category cannot be empty...."
+        });
     }
-
 
     if (!image) {
         return res.json({
             success: false,
             data: null,
             message: "image cannot be empty...."
-
-        })
+        });
     }
 
     if (!price) {
@@ -54,22 +50,16 @@ app.post("/plant", (req, res) => {
             success: false,
             data: null,
             message: "price cannot be empty...."
-
-        })
+        });
     }
 
-
-
-    if (!discription) {
+    if (!description) {
         return res.json({
             success: false,
             data: null,
-            message: "discription cannot be empty...."
-
-        })
+            message: "description cannot be empty...."
+        });
     }
-
-
 
     const randomId = Math.floor(Math.random() * 10000);
 
@@ -91,32 +81,32 @@ app.post("/plant", (req, res) => {
     });
 });
 
-
 app.get("/plants", (req, res) => {
-
-
     res.json({
         success: true,
         data: plants,
         message: "All plants fetched successfully"
-
-    })
-})
-
-
-app.get("/plant/:id", (req ,res)=>{
-    const {id} = req. params
-
-    app.get('/fetch-plant', (req, res) => {
-        res.json({
-            "success": true,
-            "data": "id",
-            "message": "Plant fetched successfully"
-        });
     });
-    
-})
+});
 
+app.get("/plant/:id", (req, res) => {
+    const { id } = req.params;
+    const plant = plants.find(p => p.id == id);
+
+    if (!plant) {
+        return res.json({
+            success: false,
+            data: null,
+            message: "Plant not found."
+        });
+    }
+
+    res.json({
+        success: true,
+        data: plant,
+        message: "Plant fetched successfully"
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
