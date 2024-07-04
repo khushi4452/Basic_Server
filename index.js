@@ -81,7 +81,7 @@ app.post("/plant", (req, res) => {
     });
 });
 
-app.get("/plants", (req, res) => {
+app.get("/plants", (req,res) => {
     res.json({
         success: true,
         data: plants,
