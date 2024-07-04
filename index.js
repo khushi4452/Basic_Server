@@ -85,7 +85,7 @@ app.get("/plants", (req,res) => {
     res.json({
         success: true,
         data: plants,
-        message: "All plants are fetched successfully"
+        message: "All plants are fetched successfully "
     });
 });
 
@@ -97,7 +97,7 @@ app.get("/plant/:id", (req, res) => {
         return res.json({
             success: false,
             data: null,
-            message: "Plant not found."
+            message: "Plant are not found."
         });
     }
 
