@@ -85,7 +85,7 @@ app.get("/plants", (req,res) => {
     res.json({
         success: true,
         data: plants,
-        message: "All plants fetched successfully"
+        message: "All plants are fetched successfully"
     });
 });
 
