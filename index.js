@@ -77,7 +77,7 @@ app.post("/plant", (req, res) => {
     res.json({
         success: true,
         data: newPlant,
-        message: "New plant added successfully"
+        message: "New plant are added successfully"
     });
 });
 
